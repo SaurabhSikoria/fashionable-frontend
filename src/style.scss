@@ -1,0 +1,256 @@
+@font-face {
+  font-family: "Logo-font";
+  src: url("./fonts/DragonlordPersonalUseOnlyRegular-PKxzm.otf");
+  font-weight: normal;
+  font-size: xx-large;
+}
+
+$bg-white: #e8eaec;
+$text-color: #979797;
+$eff-color: rgb(119 119 119);
+$color-purple: #6924c6;
+$color-blue: #1aa3b5;
+$mud-yellow: #ffc107;
+
+$boxShadow: 7px 7px 15px #45566754, -8px -8px 15px rgb(81 101 121 / 4%),
+  inset -5px -4px 13px 0px rgb(81 101 121 / 35%),
+  inset 6px 7px 12px 0px rgb(255 255 255 / 94%);
+$boxShadow2: inset 4px 4px 8px rgb(189 200 213),
+  inset -4px -4px 8px rgb(255 255 255);
+$boxShadow3: 4px 4px 8px rgb(189 200 213), -4px -4px 8px rgb(255 255 255);
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.home {
+  background-color: $bg-white !important;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar-components {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar .nav-link {
+  transition: transform 0.3s;
+}
+
+.nav-link:hover {
+  cursor: pointer;
+  color: rgb(158, 235, 253) !important;
+  transform: scale(1.3);
+}
+
+.logo {
+  font-family: "Logo-font";
+  font-size: 3.5rem !important;
+  color: transparent !important;
+  background: linear-gradient(
+    90deg,
+    rgba(106, 35, 198, 1) 0%,
+    rgba(24, 167, 181, 1) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  /* font-weight: bold; */
+  /* letter-spacing: 0.2rem; */
+}
+
+.home {
+  min-height: 100vh;
+}
+
+// .cart-logo {
+//   font-size: 1.5rem !important;
+// }
+
+// .footer-container {
+//   position: relative;
+//   height: 8rem;
+// }
+
+.footer {
+  padding: 1.4rem;
+  text-align: center;
+  z-index: 10;
+  // position: fixed;
+  // bottom: 0;
+  // width: 100%;
+}
+
+.container {
+  place-items: center;
+  height: 100vh;
+  display: grid;
+  background-color: $bg-white;
+}
+
+.form-group {
+  width: auto;
+  font-size: 1.2rem;
+  background: $bg-white;
+  box-shadow: $boxShadow;
+  border-radius: 2rem;
+  padding: 4rem 3rem;
+  height: auto;
+}
+
+form.signup {
+  height: auto;
+}
+.field input {
+  height: 3rem;
+  padding-left: 3.5rem;
+  font-size: 1.2rem;
+  outline: none !important;
+  border: none;
+  background: $bg-white;
+  box-shadow: $boxShadow2;
+  border-radius: 2rem;
+}
+
+.field input:focus {
+  box-shadow: $boxShadow3;
+  background-color: $bg-white;
+}
+
+.signin-btn {
+  width: 90%;
+  padding: 1rem;
+  margin: 1.2rem 1.3rem;
+  border-radius: 2rem;
+  box-shadow: $boxShadow3;
+  color: black;
+  background: $bg-white;
+  border: none;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.signin-btn:focus {
+  color: #ff6100;
+  box-shadow: $boxShadow2;
+}
+
+.card {
+  background-color: $bg-white !important;
+  box-shadow: $boxShadow3;
+  border-radius: 0.8rem !important;
+  padding: 0.8rem;
+  border: none !important;
+  height: 34rem !important;
+}
+
+.card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card > img {
+  border-radius: 0.6rem;
+  height: 18rem;
+}
+
+.card-description {
+  max-height: 3.4rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.card-btn button {
+  border-radius: 0.3rem;
+  border: none !important;
+  font-weight: 600;
+  padding: 0.4rem 1.4rem;
+}
+
+.cart-image {
+  height: 10.5rem !important;
+  object-fit: fill;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.user-profile {
+  width: 70%;
+}
+
+// admin panel css    ##############################
+
+.sidebar {
+  border-right: 1px solid #979797;
+  height: auto;
+  text-align: center;
+  background-color: #06707edb;
+}
+
+.menu-item {
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  color: white !important;
+}
+
+.menu-item.active {
+  background-color: #02616d;
+}
+
+.submenu h5 {
+  color: #fff;
+  cursor: pointer;
+}
+
+.show-category {
+  list-style: none;
+}
+
+.dropdown-toggle {
+  font-size: 2.4rem;
+}
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.dropdown-menu {
+  z-index: 100;
+}
+.manage-category {
+  cursor: pointer;
+}
+.edit-category:hover {
+  color: #ff6100;
+}
+.delete-category:hover {
+  color: red;
+}
+.field span {
+  z-index: 10;
+  position: absolute;
+  /* width: 50px; */
+  line-height: 50px;
+  color: var(--tcolor);
+  font-size: 22px;
+  margin-left: 15px;
+}
+
+.menu-item:active {
+  box-shadow: $boxShadow2;
+  color: #ff6100;
+}
+
+.product-form input {
+  margin-bottom: 1.3rem;
+}
+
+.product-form .textarea {
+  height: 6rem;
+}
