@@ -142,7 +142,7 @@ form.signup {
 }
 
 .card {
-  background-color: $bg-white !important;
+  background-color: #f5f5f5 !important;
   box-shadow: $boxShadow3;
   border-radius: 0.8rem !important;
   padding: 0.8rem;
@@ -180,8 +180,17 @@ form.signup {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.user-side-menu {
+  height: 70vh;
+}
+
 .user-profile {
   width: 70%;
+}
+
+.order-image {
+  height: 6rem !important;
+  object-fit: fill;
 }
 
 // admin panel css    ##############################

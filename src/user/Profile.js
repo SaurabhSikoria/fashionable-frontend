@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { updateUser } from "./helper/userapicalls";
-import Base from "../core/Base";
+import UserDashboard from "./UserDashboard";
 
 const Profile = (props) => {
   const { user, token } = props.location.state;
@@ -51,8 +51,8 @@ const Profile = (props) => {
   };
 
   return (
-    <Base>
-      <div className="container-fluid user-profile form-group my-5">
+    <UserDashboard>
+      <div className="container-fluid user-profile form-group my-5 me-5">
         <h2 className="user-profile-heading fw-bold text-center">
           Personal Info.
         </h2>
@@ -148,7 +148,7 @@ const Profile = (props) => {
           )}
         </div>
       </div>
-    </Base>
+    </UserDashboard>
   );
 };
 

@@ -3,6 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   categoryMenu: false,
   productMenu: false,
+  profile: false,
+  orders: false,
 };
 
 export const submenuSlice = createSlice({
@@ -15,9 +17,16 @@ export const submenuSlice = createSlice({
     toggleProductMenu: (state) => {
       state.productMenu = !state.productMenu;
     },
+    toggleProfile: (state) => (state.profile = !state.profile),
+    toggleOrders: (state) => (state.orders = !state.orders),
   },
 });
 
-export const { toggleCategoryMenu, toggleProductMenu } = submenuSlice.actions;
+export const {
+  toggleCategoryMenu,
+  toggleProductMenu,
+  toggleOrders,
+  toggleProfile,
+} = submenuSlice.actions;
 
 export default submenuSlice.reducer;

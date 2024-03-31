@@ -21,6 +21,32 @@ const Cart = () => {
     getToken();
   }, [token]);
 
+  useEffect(() => {
+    items.map((item) => {
+      getOneProduct(item.product)
+        .then((product) => {
+          setCartItems((prevItems) => {
+            const itemIndex = prevItems.findIndex(
+              (item) => item._id === item.product
+            );
+
+            if (itemIndex !== -1) {
+              const updatedCartItems = [...prevItems];
+              updatedCartItems[itemIndex] = {
+                ...product,
+                quantity: item.quantity,
+              };
+              return updatedCartItems;
+            } else {
+              product.quantity = item.quantity;
+              return [...prevItems, product];
+            }
+          });
+        })
+        .catch((err) => console.log(err));
+    });
+  }, [items]);
+
   const getToken = async () => {
     try {
       const data = await fetch(`${Api}/${user._id}/braintree/token`, {
@@ -71,7 +97,7 @@ const Cart = () => {
           if (res.ok === true) {
             setPaymentSuccess(true);
             emptyCart(user._id);
-            <Redirect to="/user/orders" />;
+            <Redirect to={`'/user/ordes/${user._id}`} />;
           }
         })
         .catch((err) => console.log(`Payment Error: ${err}`));
@@ -79,32 +105,6 @@ const Cart = () => {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    items.map((item) => {
-      getOneProduct(item.product)
-        .then((product) => {
-          setCartItems((prevItems) => {
-            const itemIndex = prevItems.findIndex(
-              (item) => item._id === item.product
-            );
-
-            if (itemIndex !== -1) {
-              const updatedCartItems = [...prevItems];
-              updatedCartItems[itemIndex] = {
-                ...product,
-                quantity: item.quantity,
-              };
-              return updatedCartItems;
-            } else {
-              product.quantity = item.quantity;
-              return [...prevItems, product];
-            }
-          });
-        })
-        .catch((err) => console.log(err));
-    });
-  }, [items]);
 
   const paymentSuccessMessage = () => (
     <div>

@@ -27,7 +27,7 @@ const Routes = () => {
         <UserRoute path="/user/cart" exact component={Home} />
         <UserRoute path="/cart" component={Cart} />
         <UserRoute path="/user/profile/:user" component={Profile} />
-        <UserRoute path="/user/orders" component={Orders} />
+        <UserRoute path="/user/orders/:user" component={Orders} />
         <AdminRoute path="/admin/admindashboard" component={AdminDashboard} />
         <AdminRoute path="/category/create" component={CreateCategory} />
         <AdminRoute path="/category/manage" component={ManageCategory} />

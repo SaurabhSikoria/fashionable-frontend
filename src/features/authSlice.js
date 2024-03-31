@@ -48,8 +48,11 @@ export const signin = (user) => async (dispatch) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      localStorage.setItem("jwt", JSON.stringify(data));
-      dispatch(authenticateUser(data));
+      if (data.error) console.log("User not authenticated");
+      else {
+        localStorage.setItem("jwt", JSON.stringify(data));
+        dispatch(authenticateUser(data));
+      }
     })
     .catch((err) => console.log(err));
 };
