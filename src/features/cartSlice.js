@@ -28,8 +28,9 @@ export const cartSlice = createSlice({
       state.error = action.payload;
     },
     removeCartItem: (state, action) => {
-      const itemToRemove = action.payload;
-      state.items = state.items.filter((item) => item.product !== itemToRemove);
+      state.items = state.items.filter(
+        (item) => item.product !== action.payload
+      );
     },
   },
 });
@@ -50,7 +51,8 @@ export const fetchCartData = (productId) => async (dispatch, getState) => {
       dispatch(fetchCartDataStart());
       if (productId) {
         const cartData = await addToCart(userId, token, productId);
-        dispatch(fetchCartDataSuccess(cartData));
+        if (!cartData.error) dispatch(fetchCartDataSuccess(cartData));
+        dispatch(fetchCartDataFailed(cartData.error));
       } else {
         const cartData = await fetchCart(userId, token);
         dispatch(fetchCartDataSuccess(cartData));

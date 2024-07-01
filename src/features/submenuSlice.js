@@ -17,16 +17,22 @@ export const submenuSlice = createSlice({
     toggleProductMenu: (state) => {
       state.productMenu = !state.productMenu;
     },
-    toggleProfile: (state) => (state.profile = !state.profile),
-    toggleOrders: (state) => (state.orders = !state.orders),
+    setProfile: (state) => {
+      state.profile = true;
+      state.orders = false;
+    },
+    setOrdersState: (state) => {
+      state.profile = false;
+      state.orders = true;
+    },
   },
 });
 
 export const {
   toggleCategoryMenu,
   toggleProductMenu,
-  toggleOrders,
-  toggleProfile,
+  setOrdersState,
+  setProfile,
 } = submenuSlice.actions;
 
 export default submenuSlice.reducer;

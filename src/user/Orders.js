@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getUserOrders } from "./helper/userapicalls";
 import UserDashboard from "./UserDashboard";
+import { setOrdersState } from "../features/submenuSlice";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const Orders = ({ match }) => {
   const [orders, setOrders] = useState([]);
   const { token, user } = useSelector((state) => state.auth.user);
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(setOrdersState());
     getUserOrders(user._id, token)
       .then((data) => {
         setOrders(data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [dispatch]);
 
   const imagehelper = (picture) => {
     if (picture) {
@@ -42,23 +46,36 @@ const Orders = ({ match }) => {
         {orders ? (
           orders.map((order) => {
             return (
-              <div key={order._id} className="container-fluid">
-                {order.products?.map((product) => {
-                  return (
-                    <div
-                      key={product._id}
-                      className="row align-items-center border-bottom py-3 bg-light rounded"
-                    >
-                      {/* <h6 className="col-md-3">{order.status}</h6> */}
-                      <div className="col-md-4">
-                        {imagehelper(product.picture)}
+              <Link
+                key={order._id}
+                to={{
+                  pathname: `/user/order/status`,
+                  state: { order },
+                }}
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <div className="user-single-order container-fluid rounded my-2">
+                  {order.products?.map((product) => {
+                    return (
+                      <div
+                        key={product._id}
+                        className="row align-items-center border-bottom py-3 bg-light"
+                      >
+                        <div className="col-md-3">
+                          {imagehelper(product.picture)}
+                        </div>
+                        <div className="col-md-5">{product.name}</div>
+                        <div className="col-md-2">$ {product.price}</div>
+                        <h6 className="col-md-2">
+                          {order.status === "Recieved"
+                            ? "Order Placed"
+                            : order.status}
+                        </h6>
                       </div>
-                      <div className="col-md-5">{product.name}</div>
-                      <div className="col-md-3">$ {product.price}</div>
-                    </div>
-                  );
-                })}
-              </div>
+                    );
+                  })}
+                </div>
+              </Link>
             );
           })
         ) : (

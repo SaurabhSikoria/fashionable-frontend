@@ -16,6 +16,8 @@ import Orders from "./user/Orders";
 import ManageProduct from "./admin/ManageProduct";
 import UpdateProduct from "./admin/UpdateProduct";
 import Profile from "./user/Profile";
+import ManageOrders from "./admin/ManageOrders";
+import ViewOrder from "./user/ViewOrder";
 
 const Routes = () => {
   return (
@@ -28,6 +30,7 @@ const Routes = () => {
         <UserRoute path="/cart" component={Cart} />
         <UserRoute path="/user/profile/:user" component={Profile} />
         <UserRoute path="/user/orders/:user" component={Orders} />
+        <UserRoute path="/user/order/status" component={ViewOrder} />
         <AdminRoute path="/admin/admindashboard" component={AdminDashboard} />
         <AdminRoute path="/category/create" component={CreateCategory} />
         <AdminRoute path="/category/manage" component={ManageCategory} />
@@ -37,6 +40,7 @@ const Routes = () => {
           path="/product/update/:productId"
           component={UpdateProduct}
         />
+        <AdminRoute path="/orders/manage" component={ManageOrders} />
       </Switch>
     </BrowserRouter>
   );

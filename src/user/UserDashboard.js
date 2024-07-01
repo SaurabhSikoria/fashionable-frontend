@@ -1,7 +1,8 @@
 import React from "react";
 import Base from "../core/Base";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleOrders, toggleProfile } from "../features/submenuSlice";
+import { setOrdersState, setProfile } from "../features/submenuSlice";
+import { withRouter } from "react-router-dom";
 
 const UserDashboard = ({ history, children }) => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const UserDashboard = ({ history, children }) => {
             <h4
               className={`menu-item text-dark mb-2 ${profile ? "active" : ""}`}
               onClick={() => {
-                dispatch(toggleProfile());
+                dispatch(setProfile());
                 history.push(`/user/profile/${user._id}`);
               }}
             >
@@ -25,7 +26,10 @@ const UserDashboard = ({ history, children }) => {
             </h4>
             <h4
               className={`menu-item text-dark mb-2 ${orders ? "active" : ""}`}
-              onClick={() => dispatch(toggleOrders())}
+              onClick={() => {
+                dispatch(setOrdersState());
+                history.push(`/user/orders/${user._id}`);
+              }}
             >
               Orders
             </h4>
@@ -37,4 +41,4 @@ const UserDashboard = ({ history, children }) => {
   );
 };
 
-export default UserDashboard;
+export default withRouter(UserDashboard);

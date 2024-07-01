@@ -7,6 +7,7 @@ const Card = ({ product }) => {
 
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
+  const cartError = useSelector((state) => state.cart.error);
   const isItemInCart = cartItems.some((item) => item.product === product._id);
 
   useEffect(() => {
@@ -21,7 +22,7 @@ const Card = ({ product }) => {
   }, [product]);
 
   return (
-    <div className="card card-menu mx-3 mb-4">
+    <div className="card card-menu mx-3 mb-4 cursor-pointer">
       <img className="card-image" src={image} alt="shoes" />
       <div className="card-body p-0 d-flex flex-column">
         <h4 className="card-title m-2">{product.name}</h4>

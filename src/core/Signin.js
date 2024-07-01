@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 const Signin = () => {
   const [values, setValues] = useState({
     email: "admin@gmail.com",
-    password: "admin@1",
+    password: "123456",
     error: "",
     didRedirect: false,
   });

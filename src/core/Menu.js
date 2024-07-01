@@ -28,7 +28,7 @@ const Menu = ({ history }) => {
           <Link
             style={currentTab(history, "/")}
             to="/"
-            className="nav-link  mx-3"
+            className="nav-link home-navbar  mx-3"
           >
             Home
           </Link>
@@ -37,7 +37,7 @@ const Menu = ({ history }) => {
           <Link
             style={currentTab(history, "/category/create")}
             to="/category/create"
-            className="nav-link mx-3"
+            className="nav-link home-navbar mx-3"
           >
             About
           </Link>
@@ -48,7 +48,7 @@ const Menu = ({ history }) => {
               <Link
                 style={currentTab(history, "/signup")}
                 to="/signup"
-                className="nav-link mx-3"
+                className="nav-link home-navbar mx-3"
               >
                 Sign Up
               </Link>
@@ -57,7 +57,7 @@ const Menu = ({ history }) => {
               <Link
                 style={currentTab(history, "/signin")}
                 to="/signin"
-                className="nav-link mx-3"
+                className="nav-link home-navbar mx-3"
               >
                 Sign In
               </Link>
@@ -68,14 +68,14 @@ const Menu = ({ history }) => {
             <li className="nav-item">
               <span
                 style={currentTab(history, "/cart")}
-                className="nav-link bx bxs-cart bx-sm cart-logo"
+                className="nav-link home-navbar bx bxs-cart bx-sm cart-logo"
                 onClick={() => history.push("/cart")}
               ></span>
             </li>
             <li className="nav-item">
               <div className="dropdown" data-bs-placement="left">
                 <span
-                  className="dropdown-toggle bx bxs-user-circle user-profile-icon ms-4 bg-secondary rounded"
+                  className="dropdown-toggle bx bxs-user-circle user-profile-icon ms-4 bg-secondary rounded cursor-pointer"
                   id="dropdownMenuButton"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"

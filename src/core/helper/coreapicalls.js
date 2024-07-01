@@ -1,7 +1,7 @@
 import { Api } from "../../backend";
 
 export const getAllProducts = async () => {
-  return await fetch(`${Api}/products`, {
+  return await fetch(`${Api}/products?page=1&limit=10`, {
     method: "GET",
   })
     .then((res) => res.json())

@@ -67,6 +67,13 @@ const AdminMenu = ({ history }) => {
         </div>
       )}
       <h4
+        style={currentTab(history, "/orders/manage")}
+        className="menu-item mb-2"
+        onClick={() => history.push("/orders/manage")}
+      >
+        Manage Orders
+      </h4>
+      <h4
         style={currentTab(history, "/category/delete")}
         className="menu-item mb-2"
         onClick={() => history.push("/category/delete")}

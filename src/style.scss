@@ -5,7 +5,7 @@
   font-size: xx-large;
 }
 
-$bg-white: #e8eaec;
+$bg-white: "aliceblue";
 $text-color: #979797;
 $eff-color: rgb(119 119 119);
 $color-purple: #6924c6;
@@ -17,12 +17,16 @@ $boxShadow: 7px 7px 15px #45566754, -8px -8px 15px rgb(81 101 121 / 4%),
   inset 6px 7px 12px 0px rgb(255 255 255 / 94%);
 $boxShadow2: inset 4px 4px 8px rgb(189 200 213),
   inset -4px -4px 8px rgb(255 255 255);
-$boxShadow3: 4px 4px 8px rgb(189 200 213), -4px -4px 8px rgb(255 255 255);
+$boxShadow3: rgba(0, 0, 0, 0.15) 0px 2px 8px;
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .home {
@@ -44,7 +48,16 @@ header {
   transition: transform 0.3s;
 }
 
-.nav-link:hover {
+.nav-link {
+  color: $text-color !important;
+}
+
+.nav-link.active {
+  color: $color-purple !important;
+  font-weight: 600;
+}
+
+.home-navbar:hover {
   cursor: pointer;
   color: rgb(158, 235, 253) !important;
   transform: scale(1.3);
@@ -142,12 +155,17 @@ form.signup {
 }
 
 .card {
-  background-color: #f5f5f5 !important;
+  background-color: #fff !important;
   box-shadow: $boxShadow3;
   border-radius: 0.8rem !important;
   padding: 0.8rem;
   border: none !important;
   height: 34rem !important;
+}
+
+.card:hover {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
+    rgba(0, 0, 0, 0.05) 0px 5px 10px;
 }
 
 .card-title {
@@ -174,6 +192,45 @@ form.signup {
   padding: 0.4rem 1.4rem;
 }
 
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination .page-item {
+  margin: 0 5px;
+}
+
+.pagination .page-item .page-link {
+  border: none;
+  color: #007bff;
+  background-color: #fff;
+  padding: 10px 15px;
+  border-radius: 50%;
+}
+
+.pagination .page-item.active .page-link {
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+}
+
+.pagination .page-item .page-link:hover {
+  color: #0056b3;
+  background-color: #e9ecef;
+}
+
+.pagination .page-item .page-link:focus {
+  box-shadow: none;
+}
+
+.pagination .page-item.disabled .page-link {
+  color: #6c757d;
+  pointer-events: none;
+  background-color: #fff;
+}
+
 .cart-image {
   height: 10.5rem !important;
   object-fit: fill;
@@ -193,6 +250,36 @@ form.signup {
   object-fit: fill;
 }
 
+.user-single-order:hover {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
+
+.order-details {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.delivery-address,
+.order-options {
+  flex: 1;
+}
+
+.delivery-address {
+  border-right: 1px solid #ddd;
+}
+
+.delivery-address h6,
+.order-options h6 {
+  font-weight: 600;
+}
+
+.order-options a {
+  width: 40%;
+  margin: auto;
+}
+
 // admin panel css    ##############################
 
 .sidebar {
@@ -200,6 +287,7 @@ form.signup {
   height: auto;
   text-align: center;
   background-color: #06707edb;
+  min-height: 70vh;
 }
 
 .menu-item {
@@ -262,4 +350,47 @@ form.signup {
 
 .product-form .textarea {
   height: 6rem;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.bg-light {
+  background-color: #f8f9fa !important;
+}
+
+.bg-primary {
+  background-color: #007bff !important;
+}
+
+.text-muted {
+  color: #6c757d !important;
+}
+
+.text-white {
+  color: #fff !important;
+}
+
+.shadow {
+  box-shadow: 0 0.15rem 1.75rem rgba(58, 59, 69, 0.15) !important;
+}
+
+.list-inline {
+  padding-left: 0;
+  list-style: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.list-inline-item {
+  display: inline-block;
 }

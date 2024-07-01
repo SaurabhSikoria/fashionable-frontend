@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { updateUser } from "./helper/userapicalls";
 import UserDashboard from "./UserDashboard";
-
+import { useDispatch, useSelector } from "react-redux";
+import { setProfile } from "../features/submenuSlice";
 const Profile = (props) => {
-  const { user, token } = props.location.state;
+  const { user, token } = useSelector((state) => state.auth.user);
+  const dispatch = useDispatch();
 
-  const [profile, setProfile] = useState({
+  useEffect(() => {
+    dispatch(setProfile());
+  }, [dispatch]);
+
+  const [userProfile, setUserProfile] = useState({
     firstname: user.firstname,
     lastname: user.lastname,
     email: user.email,
@@ -33,15 +39,15 @@ const Profile = (props) => {
   const setFields = (e) => {
     const { name, value } = e.target;
     const tempFormData = new FormData();
-    // Object.entries(profile.formData).forEach(([key, value]) => {
+    // Object.entries(userProfile.formData).forEach(([key, value]) => {
     //   tempFormData.append(key, value); // Copy existing fields to tempFormData
     // });
     tempFormData.set(name, value);
-    setProfile({ ...profile, [name]: value, formData: tempFormData });
+    setUserProfile({ ...userProfile, [name]: value, formData: tempFormData });
   };
 
   const updateUserInfo = () => {
-    updateUser(user._id, token, profile.formData)
+    updateUser(user._id, token, userProfile.formData)
       .then((res) => {
         if (res?.error) console.log(res.error);
         else console.log(res);
@@ -52,8 +58,8 @@ const Profile = (props) => {
 
   return (
     <UserDashboard>
-      <div className="container-fluid user-profile form-group my-5 me-5">
-        <h2 className="user-profile-heading fw-bold text-center">
+      <div className="container-fluid user-userProfile form-group my-5 me-5">
+        <h2 className="user-userProfile-heading fw-bold text-center">
           Personal Info.
         </h2>
         <div className="user-name my-3 px-4">
@@ -64,18 +70,18 @@ const Profile = (props) => {
                 type="text"
                 name="firstname"
                 className="form-control"
-                value={profile.firstname}
+                value={userProfile.firstname}
                 onChange={setFields}
               />
               <input
                 type="text"
                 name="lastname"
                 className="form-control"
-                value={profile.lastname}
+                value={userProfile.lastname}
                 onChange={setFields}
               />
               <button
-                className="edit-profile btn btn-primary ms-4"
+                className="edit-userProfile btn btn-primary ms-4"
                 onClick={updateUserInfo}
               >
                 Save
@@ -84,10 +90,10 @@ const Profile = (props) => {
           ) : (
             <div className="d-flex">
               <div className="user-name">
-                {profile.firstname} {profile.lastname}
+                {userProfile.firstname} {userProfile.lastname}
               </div>
               <button
-                className="edit-profile btn btn-primary ms-4"
+                className="edit-userProfile btn btn-primary ms-4"
                 onClick={() => toggleEditMode("name")}
               >
                 Edit
@@ -103,11 +109,11 @@ const Profile = (props) => {
                 type="text"
                 name="email"
                 className="form-control"
-                value={profile.email}
+                value={userProfile.email}
                 onChange={setFields}
               />
               <button
-                className="edit-profile btn btn-primary ms-4"
+                className="edit-userProfile btn btn-primary ms-4"
                 onClick={updateUserInfo}
               >
                 Save
@@ -115,9 +121,9 @@ const Profile = (props) => {
             </div>
           ) : (
             <div className="d-flex">
-              <div className="user-name">{profile.email}</div>
+              <div className="user-name">{userProfile.email}</div>
               <button
-                className="edit-profile btn btn-primary ms-4"
+                className="edit-userProfile btn btn-primary ms-4"
                 onClick={() => toggleEditMode("email")}
               >
                 Edit

@@ -2,6 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom"; // If you plan to use React Router for navigation
 import Menu from "./Menu";
+import ErrorComponent from "../errorComponent";
 
 const Base = ({ children }) => {
   return (
@@ -32,6 +33,7 @@ const Base = ({ children }) => {
       </header>
 
       {children}
+      {/* <ErrorComponent /> */}
       <div className="footer-container">
         <footer className="footer bg-dark text-light py-4">
           <div className="row">
